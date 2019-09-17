@@ -1,1 +1,63 @@
-<p>Signos Vitales</p>
+<mat-toolbar>Signos Vitales</mat-toolbar>
+
+<div class="example-container mat-elevation-z8">
+
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar signos vitales">
+      </mat-form-field>
+    </div>
+  
+    <mat-table [dataSource]="dataSource" matSort>
+  
+      <ng-container matColumnDef="idsignos">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> IDSIGNOS </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.idSignos}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="paciente">
+        <mat-header-cell *matHeaderCellDef> Paciente </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{row.paciente.nombres }} {{row.paciente.apellidos}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{row.fecha | date:'dd-MM-yyyy HH:mm:ss'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="temperatura">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Temperatura </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.temperatura}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="pulso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Pulso </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.pulso}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ritmo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ritmo Respiratorio </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.ritmo}} </mat-cell>
+      </ng-container>
+      
+     <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let row">        
+          <button mat-button color="primary" (click)="openDialog(row)" >Actualizar</button>
+          <button mat-button color="accent" (click)="eliminar(row)">Eliminar</button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+  
+  <br>
+  
+  <button mat-fab color="accent" (click)="openDialog()" style="float: right; margin-right: 20px">
+    <mat-icon>create</mat-icon>
+  </button>
