@@ -65,7 +65,7 @@ export function tokenGetter() {
     SignosComponent,
     SignosDialogComponent
   ],
-  entryComponents: [MedicoDialogoComponent, DialogoDetalleComponent],
+  entryComponents: [SignosDialogComponent,MedicoDialogoComponent, DialogoDetalleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatDialog, MatSnackBar } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort, MatPaginator, MatDialog, MatSnackBar } from '@angular/material';
 import { Signos } from 'src/app/_model/signos';
 import { SignosService } from 'src/app/_service/signos.service';
 import { SignosDialogComponent } from './signos-dialog/signos-dialog.component';
@@ -16,13 +17,13 @@ export class SignosComponent implements OnInit {
 
   maxFecha: Date = new Date();
   displayedColumns = ['idsignos','paciente', 'fecha', 'temperatura', 'pulso', 'ritmo','acciones'];
+
   dataSource: MatTableDataSource<Signos>;
   
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  progress: boolean = false;
- 
+  
   constructor(private signosService: SignosService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
 
@@ -30,6 +31,7 @@ export class SignosComponent implements OnInit {
   ngOnInit() {
     this.signosService.signosCambio.subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
+      console.log("DATA signos: "+data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -48,10 +50,10 @@ export class SignosComponent implements OnInit {
   }
 
   openDialog(signos?: Signos) {
+    console.log("Signos:: "+ Signos);
     let sig = signos != null ? signos : new Signos();
-
     this.dialog.open(SignosDialogComponent  , {
-      width: '250px',
+      width: '350px',
       data: sig
     });
   }

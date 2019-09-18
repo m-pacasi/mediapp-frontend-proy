@@ -14,15 +14,15 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header> IDSIGNOS </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.idSignos}} </mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="paciente">
         <mat-header-cell *matHeaderCellDef> Paciente </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{row.paciente.nombres }} {{row.paciente.apellidos}}</mat-cell>
+        <mat-cell *matCellDef="let row"> {{row.paciente.nombres }} {{row.paciente.apellidos}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="fecha">
         <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{row.fecha | date:'dd-MM-yyyy HH:mm:ss'}}</mat-cell>
+        <mat-cell *matCellDef="let row"> {{row.fecha | date:'dd-MM-yyyy HH:mm:ss'}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="temperatura">

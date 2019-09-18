@@ -17,6 +17,7 @@ export class MedicoDialogoComponent implements OnInit {
 
   ngOnInit() {
     this.medico = new Medico();
+    console.log("dialogMedico"+ this.medico);
     this.medico.idMedico = this.data.idMedico;
     this.medico.nombres = this.data.nombres;
     this.medico.apellidos = this.data.apellidos;

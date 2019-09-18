@@ -13,14 +13,17 @@ export class SignosDialogComponent implements OnInit {
 
   signos: Signos;
 
+  fecha: Date = new Date();
+
   constructor(private dialogRef: MatDialogRef<SignosDialogComponent>, @Inject(MAT_DIALOG_DATA) private data: Signos, private signosService: SignosService) { }
 
   ngOnInit() {
+    console.log("dialog ingresa"+ this.signos);
     this.signos = new Signos();
     this.signos.idSignos = this.data.idSignos;
-    this.signos.paciente.nombres = this.data.paciente.nombres;
+    this.signos.paciente = this.data.paciente;
     this.signos.fecha = this.data.fecha;
-    this.signos.temperatura = this.data.fecha;
+    this.signos.temperatura = this.data.temperatura;
     this.signos.pulso = this.data.pulso;
     this.signos.ritmo = this.data.ritmo;
   }

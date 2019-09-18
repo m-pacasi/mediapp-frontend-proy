@@ -1,12 +1,22 @@
+
 <div>
-    <mat-form-field>
-        <input matInput placeholder="Paciente" [(ngModel)]="signos.paciente.apellidos">
-    </mat-form-field>
+        <mat-form-field>
+              
+                <input matInput placeholder="Paciente" [(ngModel)]="signos.paciente.nombres">  
+            </mat-form-field>
+
     <mat-form-field>
         <input matInput [matDatepicker]="picker" placeholder="Fecha" [max]="maxFecha"
             [(ngModel)]="signos.fecha">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" [max]="maxFecha"
+                [(ngModel)]="fechaSeleccionada">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field>
@@ -16,9 +26,10 @@
         <textarea matInput placeholder="Pulso" [(ngModel)]="signos.pulso"></textarea>
     </mat-form-field>
     <mat-form-field>
-        <textarea matInput placeholder="Ritmo Respitario" [(ngModel)]="signos.ritmo"></textarea>
+        <textarea matInput placeholder="Ritmo" [(ngModel)]="signos.ritmo"></textarea>
     </mat-form-field>
 
 </div>
+
 <button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
 <button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>

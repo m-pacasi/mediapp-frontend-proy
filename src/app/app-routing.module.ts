@@ -16,6 +16,7 @@ import { PacienteEdicionComponent } from './pages/paciente/paciente-edicion/paci
 import { EspecialidadComponent } from './pages/especialidad/especialidad.component';
 import { LoginComponent } from './login/login.component';
 import { GuardService } from './_service/guard.service';
+import { SignosComponent } from './pages/signos/signos.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'consulta-especial', component: EspecialComponent, canActivate: [GuardService] },
   { path: 'buscar', component: BuscarComponent, canActivate: [GuardService] },
   { path: 'reporte', component: ReporteComponent, canActivate: [GuardService] },
+  { path: 'signos', component: SignosComponent, canActivate: [GuardService] },
   { path: 'not-403', component: Not403Component },
   { path: 'login', component: LoginComponent },
   {

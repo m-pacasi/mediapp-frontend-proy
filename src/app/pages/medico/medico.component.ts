@@ -42,6 +42,7 @@ export class MedicoComponent implements OnInit {
   }
 
   openDialog(medico?: Medico) {
+    console.log("Medico"+ medico)
     let med = medico != null ? medico : new Medico();
 
     this.dialog.open(MedicoDialogoComponent, {
