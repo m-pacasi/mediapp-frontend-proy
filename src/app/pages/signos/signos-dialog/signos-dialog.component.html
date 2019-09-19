@@ -1,23 +1,21 @@
 
 <div>
+        
         <mat-form-field>
-              
-                <input matInput placeholder="Paciente" [(ngModel)]="signos.paciente.nombres">  
-            </mat-form-field>
+            <mat-select placeholder="Paciente" [(value)]="idPacienteSeleccionado">
+                <mat-option *ngFor="let p of pacientes" [value]="p.idPaciente">
+                    {{p.nombres}} {{p.apellidos}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <mat-form-field>
+    
+       <mat-form-field>
         <input matInput [matDatepicker]="picker" placeholder="Fecha" [max]="maxFecha"
             [(ngModel)]="signos.fecha">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" [max]="maxFecha"
-                [(ngModel)]="fechaSeleccionada">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+        </mat-form-field>
 
     <mat-form-field>
         <input matInput placeholder="Temperatura" [(ngModel)]="signos.temperatura">

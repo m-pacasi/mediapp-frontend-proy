@@ -50,7 +50,6 @@ export class SignosComponent implements OnInit {
   }
 
   openDialog(signos?: Signos) {
-    console.log("Signos:: "+ Signos);
     let sig = signos != null ? signos : new Signos();
     this.dialog.open(SignosDialogComponent  , {
       width: '350px',
