@@ -3,6 +3,7 @@ import { Menu } from './../_model/menu';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { UsuarioRolDTO } from '../_dto/usuarioRolDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,15 @@ export class MenuService {
     return this.http.post<Menu[]>(`${this.url}/menus/usuario`, nombre, {
       headers: new HttpHeaders().set('Authorization', `bearer ${token}`).set('Content-Type', 'application/json')
     });
+  }
+
+  listarUsuarioRol(nombre: string){
+    let token = sessionStorage.getItem(environment.TOKEN_NAME);    
+    return this.http.post<UsuarioRolDTO[]>(`${this.url}/menus/usuariorol`, nombre, {
+      headers: new HttpHeaders().set('Authorization', `bearer ${token}`).set('Content-Type', 'application/json')
+     
+    });
+    console.log("ingresa al menu service");
   }
 
 }
