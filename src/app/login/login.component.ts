@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   clave: string;
   mensaje: string = "";
   error: string = "";
+  usuarionombre:"";
 
   constructor(private loginService: LoginService, private menuService: MenuService, private router: Router) { }
 
@@ -32,14 +33,18 @@ export class LoginComponent implements OnInit {
 
         let token = sessionStorage.getItem(environment.TOKEN_NAME);
         let decodedToken = helper.decodeToken(token);
-        //console.log(decodedToken);
-
-        this.menuService.listarPorUsuario(decodedToken.user_name).subscribe(data => {
-          this.menuService.menuCambio.next(data);
-          this.router.navigate(['paciente']);
-        });
+       // console.log("decodeTOKEN..."+decodedToken);
         
-      }
+        this.menuService.listarPorUsuario(decodedToken.user_name).subscribe(data => {
+                 this.menuService.menuCambio.next(data);
+                 this.router.navigate(['paciente']);
+        });
+
+        this.menuService.listarUsuarioRol(decodedToken.user_name).subscribe(data => {
+                 this.loginService.usuarioRol.next(data);
+          
+        });
+       }
     });
   }
 

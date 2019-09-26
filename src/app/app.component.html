@@ -6,14 +6,24 @@
         </button>
 
         <h1 class="example-app-name">MEDIAPP</h1>
-
+       
+      
         <span class="example-spacer"></span>
+    
+        <span classs="fill-space"></span>
+        
+        <mat-card color="primary" class="example-card" *ngFor="let d of usuarioroles" >
+                <mat-card-content color="primary">
+                    <p> Usuario: {{d.usuario}} Rol: {{d.rol}} </p>
+                 </mat-card-content>
+        </mat-card>
 
         <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
         </button>
 
-        <mat-menu #menu="matMenu">
+         <mat-menu #menu="matMenu">
+            
             <button mat-menu-item routerLink="/perfil">
                 <mat-icon>account_box</mat-icon>
                 <span>Mi Perfil</span>

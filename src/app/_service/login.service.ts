@@ -2,11 +2,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { UsuarioRolDTO } from '../_dto/usuarioRolDTO';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
+  usuarioRol = new Subject<UsuarioRolDTO[]>();
 
   url: string = `${environment.HOST}/oauth/token`
   //url: string = `${environment.HOST}/uaa/oauth/token`

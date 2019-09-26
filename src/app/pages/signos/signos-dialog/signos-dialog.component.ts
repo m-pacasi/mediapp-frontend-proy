@@ -13,8 +13,7 @@ import { PacienteService } from 'src/app/_service/paciente.service';
 })
 export class SignosDialogComponent implements OnInit {
   
-  //pacientes: Paciente;
-
+ 
   pacientes: Paciente[] = [];
 
   idPacienteSeleccionado: number;
@@ -39,14 +38,7 @@ export class SignosDialogComponent implements OnInit {
     console.log("ingresa la primera vez::" + this.idPacienteSeleccionado)
   }
 
-  /* listaridPacientes(idPaciente: number) {
-    this.pacienteService.listarPorId(idPaciente).subscribe(data => {
-      this.pacientes = data;
-      console.log("data cliente:" + data.nombres);
-   
-    });
-  }*/
-
+ 
   listarPacientes() {
     this.pacienteService.listar().subscribe(data => {
       this.pacientes = data;
